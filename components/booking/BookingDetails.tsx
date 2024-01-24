@@ -46,7 +46,7 @@ const BookingDetails = ({ data }: Props) => {
               </tr>
               <tr>
                 <th scope="row">Amount Paid:</th>
-                <td>${booking?.amountPaid}</td>
+                <td>₹{booking?.amountPaid}</td>
               </tr>
             </tbody>
           </table>
