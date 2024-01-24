@@ -2,12 +2,12 @@
 const nextConfig = {
   env: {
     // DB_LOCAL_URI: "mongodb://127.0.0.1:27017/book-it",
-    DB_URI:
+    DB_LOCAL_URI:
       "mongodb+srv://Hishaam:hishaam%40mongodb@nodeprojects.fwck6dz.mongodb.net/BOOK-IT?retryWrites=true&w=majority",
 
-    API_URL: "https://chennaihotels.vercel.app/",
+    API_URL: "http://localhost:3000",
 
-    NEXTAUTH_URL: "https://chennaihotels.vercel.app/",
+    NEXTAUTH_URL: "http://localhost:3000",
     NEXTAUTH_SECRET: "hishaam",
 
     CLOUDINARY_CLOUD_NAME: "dxcleqyco",

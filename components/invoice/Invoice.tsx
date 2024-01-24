@@ -1,11 +1,14 @@
 "use client";
 
 import { IBooking } from "@/backend/models/booking";
-import React from "react";
+import React, { useRef } from "react";
 
 import "./Invoice.css";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+
+import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
+import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
 interface Props {
   data: {
@@ -16,6 +19,9 @@ interface Props {
 const Invoice = ({ data }: Props) => {
   const booking = data?.booking;
 
+  // const windowSize: any =
+  //   typeof window !== "undefined" && useRef([window.innerWidth]);
+
   const handleDownload = () => {
     const input = document.getElementById("booking_invoice");
     if (input) {
@@ -24,6 +30,7 @@ const Invoice = ({ data }: Props) => {
 
         const pdf = new jsPDF();
         const pdfWidth = pdf.internal.pageSize.getWidth();
+
         pdf.addImage(imgData, 0, 0, pdfWidth, 0);
         pdf.save(`invoice_${booking?._id}.pdf`);
       });
@@ -31,12 +38,17 @@ const Invoice = ({ data }: Props) => {
   };
 
   return (
-    <div className="container">
+    <div className="container order-invoice-or">
       <div className="my-5 order-invoice">
         <div className="mb-5 row d-flex justify-content-center">
           <button className="btn btn-success col-md-5" onClick={handleDownload}>
             <i className="fa fa-print"></i> Download Invoice
           </button>
+
+          <div className="my-3 alert alert-primary demo-account" role="alert">
+            For Mobile Users: Switch to Desktop mode to download invoice in
+            correct dimension
+          </div>
         </div>
         <div className="px-5">
           <div id="booking_invoice" className="px-4 border border-secondary">
@@ -44,7 +56,7 @@ const Invoice = ({ data }: Props) => {
               <div id="logo" className="my-4">
                 <img src="/images/logo.png" />
               </div>
-              <h1>INVOICE # {booking?._id}</h1>
+              <h1 className="invoice-text">INVOICE # {booking?._id}</h1>
               <div id="company" className="clearfix">
                 <div>Chennai Hotels</div>
                 <div>
@@ -53,11 +65,6 @@ const Invoice = ({ data }: Props) => {
                   Chennai-40, Tamilnadu, India
                 </div>
                 <div>+91 9876543210</div>
-                {/* <div>
-                  <a href="mailto:info@chennaihotels.com">
-                    info@chennaihotels.com
-                  </a>
-                </div> */}
               </div>
               <div id="project">
                 <div>
@@ -77,36 +84,36 @@ const Invoice = ({ data }: Props) => {
               </div>
             </header>
             <main>
-              <table className="mt-5">
-                <thead>
-                  <tr>
-                    <th className="service">Room</th>
-                    <th className="desc">Price Per Night</th>
-                    <th>Check In Date</th>
-                    <th>Check Out Date</th>
-                    <th>Days of Stay</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="service">{booking?.room?.name}</td>
-                    <td className="desc">${booking?.room?.pricePerNight}</td>
-                    <td className="unit">
+              <Table className="mt-5">
+                <Thead>
+                  <Tr>
+                    <Th className="service">Room</Th>
+                    <Th className="desc">Price Per Night</Th>
+                    <Th>Check In Date</Th>
+                    <Th>Check Out Date</Th>
+                    <Th>Days of Stay</Th>
+                  </Tr>
+                </Thead>
+                <Tbody>
+                  <Tr>
+                    <Td className="service">{booking?.room?.name}</Td>
+                    <Td className="desc">${booking?.room?.pricePerNight}</Td>
+                    <Td className="unit">
                       {new Date(booking?.checkInDate).toLocaleString("en-US")}
-                    </td>
-                    <td className="qty">
+                    </Td>
+                    <Td className="qty">
                       {new Date(booking?.checkOutDate).toLocaleString("en-US")}
-                    </td>
-                    <td className="qty">{booking?.daysOfStay}</td>
-                  </tr>
-                  <tr>
-                    <td colSpan={4} className="grand total">
+                    </Td>
+                    <Td className="qty">{booking?.daysOfStay}</Td>
+                  </Tr>
+                  <Tr>
+                    <Td colSpan={4} className="grand total">
                       <b>GRAND TOTAL</b>
-                    </td>
-                    <td className="grand total">₹{booking?.amountPaid}</td>
-                  </tr>
-                </tbody>
-              </table>
+                    </Td>
+                    <Td className="grand total">₹{booking?.amountPaid}</Td>
+                  </Tr>
+                </Tbody>
+              </Table>
               <div id="notices">
                 <div>NOTICE:</div>
                 <div className="notice">

@@ -474,17 +474,18 @@ footer {
   margin-bottom: 5px;
 }
 
-/* @media only screen and (min-width: 992px) {
-  .my-bookings {
-    width: 100% !important;
+@media only screen and (max-width: 1000px) {
+  .invoice-text {
+    font-size: large !important;
   }
-} */
+}
 
-/* .carousel-inner {
-  height: 250px;
-} */
-/* 
-.carousel-inner > .carousel-item > img {
-  min-width: 100%;
-  width: 100%;
-} */
+.booking-id {
+  display: flex;
+}
+
+@media only screen and (max-width: 1000px) {
+  .booking-id {
+    flex-direction: column;
+  }
+}
