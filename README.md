@@ -8,7 +8,7 @@ This is the homepage of this application.
 
 ![Screenshot (426)](https://github.com/hishaam08/Chennai-Hotels/assets/89605014/20f80e71-e9bf-47a4-b392-fac66fdc4c06)
 
-This application has both user and admin page ( only admins can access).
+This application has both user and admin page ( only admins can access ).
 
 Users can:
 + View all the rooms available.
