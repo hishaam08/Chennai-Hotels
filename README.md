@@ -2,6 +2,8 @@
 
 Chennai Hotels is a Fullstack Hotel Booking application developed using NextJS 13.
 
+Live: https://chennaihotels.vercel.app/
+
 ## Homepage
 
 This is the homepage of this application.
